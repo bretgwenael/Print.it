@@ -17,6 +17,17 @@ const slides = [
     }
 ];
 
+const dotContainer = document.querySelector('.dots')
+
+slides.forEach((elem, index) => {
+    const div = document.createElement('div')
+    div.classList.add('dot')
+    if(index === 0){
+        div.classList.add('dot_selected')
+    }
+    dotContainer.appendChild(div)
+})
+
 let currentSlideIndex = 0;
 
 const arrowLeft = document.querySelector('.arrow_left');
@@ -40,15 +51,20 @@ function updateSlide() {
 }
 
 arrowLeft.addEventListener('click', function(event) {
-    currentSlideIndex = (currentSlideIndex - 1 + slides.length) % slides.length;
+    currentSlideIndex --
+    if(currentSlideIndex < 0){
+        currentSlideIndex = slides.length - 1
+    }
     updateSlide();
 });
 
 arrowRight.addEventListener('click', function(event) {
-    currentSlideIndex = (currentSlideIndex + 1 ) % slides.length;
+    currentSlideIndex ++
+    if(currentSlideIndex === slides.length){
+        currentSlideIndex = 0
+    }
     updateSlide();
 });
 
 updateSlide();
-
 
