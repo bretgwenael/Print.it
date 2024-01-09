@@ -16,7 +16,7 @@ const slides = [
         "tagLine": "Autocollants <span>avec découpe laser sur mesure</span>"
     }
 ];
-
+// Creation Bullet Point
 const dotContainer = document.querySelector('.dots')
 
 slides.forEach((elem, index) => {
@@ -37,6 +37,7 @@ const dots = document.querySelectorAll('.dot');
 const bannerImage = document.querySelector('.banner-img');
 const tagline = document.querySelector('#banner p');
 
+//Changement image et tagline selon Bullet Point actif
 function updateSlide() {
     bannerImage.src = slides[currentSlideIndex].image;
     tagline.innerHTML = slides[currentSlideIndex].tagLine;
@@ -50,19 +51,23 @@ function updateSlide() {
     });
 }
 
+// EventListener fleche gauche
 arrowLeft.addEventListener('click', function(event) {
     currentSlideIndex --
     if(currentSlideIndex < 0){
         currentSlideIndex = slides.length - 1
     }
+    console.log('vous avez clique sur la fleche gauche')
     updateSlide();
 });
 
+// EventListener fleche droite
 arrowRight.addEventListener('click', function(event) {
     currentSlideIndex ++
     if(currentSlideIndex === slides.length){
         currentSlideIndex = 0
     }
+    console.log('vous avez clique sur la fleche droite')
     updateSlide();
 });
 
